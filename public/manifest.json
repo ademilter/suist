@@ -1,0 +1,27 @@
+{
+  "short_name": "SuIST",
+  "name": "SuIST",
+  "description": "İstanbul barajlarının su seviyeleri",
+  "theme_color": "#ffffff",
+  "background_color": "#f3f4f6",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons-vector.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
