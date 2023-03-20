@@ -1,28 +1,28 @@
 import ReactEChartsCore from "echarts-for-react/lib/core";
-import { ECharts } from "echarts";
+// import { ECharts } from "echarts";
 import colors from "tailwindcss/colors";
-import { useState } from "react";
+// import { useState } from "react";
 import { echarts } from "./index";
 
-export default function Container({ data = [] }: { data: [string, number][] }) {
-  const [chart, setChart] = useState<ECharts | null>(null);
-  const [isDirty, setIsDirty] = useState<boolean>(false);
+export default function BarajSuDagilimi({ data = [] }: { data: [string, number][] }) {
+  // const [chart, setChart] = useState<ECharts | null>(null);
+  // const [isDirty, setIsDirty] = useState<boolean>(false);
 
-  const onChartReadyCallback = (ch: ECharts) => {
-    if (chart) return;
-    setChart(ch);
-  };
-
-  const eventsMap = {
-    selectchanged: (params: any) => {
-      const { dataIndexInside } = params.fromActionPayload;
-      setIsDirty(dataIndexInside !== 0);
-    },
-  };
+  // const onChartReadyCallback = (ch: ECharts) => {
+  //   if (chart) return;
+  //   setChart(ch);
+  // };
+  //
+  // const eventsMap = {
+  //   selectchanged: (params: any) => {
+  //     const { dataIndexInside } = params.fromActionPayload;
+  //     setIsDirty(dataIndexInside !== 0);
+  //   },
+  // };
 
   return (
-    <div className="">
-      {isDirty && (
+    <div className="text-left">
+      {/*{isDirty && (
         <button
           type="button"
           onClick={() => {
@@ -35,32 +35,33 @@ export default function Container({ data = [] }: { data: [string, number][] }) {
         >
           Geri Dön
         </button>
-      )}
+      )}*/}
 
       <ReactEChartsCore
-        style={{ height: 180, fontFamily: "inherit" }}
-        onEvents={eventsMap}
+        style={{ height: 200, fontFamily: "inherit" }}
         echarts={echarts}
-        onChartReady={onChartReadyCallback}
+        // onEvents={eventsMap}
+        // onChartReady={onChartReadyCallback}
         lazyUpdate={true}
         option={{
+          tooltip: {
+            formatter: '{b}<br />%{c}'
+          },
           series: {
             type: "treemap",
             name: "Barajlar",
             width: "100%",
-            height: "100%",
+            height: "84%",
             top: "top",
             left: "center",
             squareRatio: 1,
             roam: false,
             leafDepth: 1,
             visibleMin: 10,
-            breadcrumb: {
-              show: false,
-            },
             labelLayout: {
               draggable: false,
             },
+
             levels: [
               {
                 color: [
@@ -90,7 +91,7 @@ export default function Container({ data = [] }: { data: [string, number][] }) {
                   fontFamily: "inherit",
                 },
                 itemStyle: {
-                  borderRadius: 2,
+                  borderRadius: 4,
                   borderColor: "transparent",
                 },
               };

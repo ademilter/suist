@@ -2,13 +2,13 @@ import ReactEChartsCore from "echarts-for-react/lib/core";
 import colors from "tailwindcss/colors";
 import { echarts } from "./index";
 
-export default function GaugeChartMevcutDurum({
+export default function MevcutDurum({
   value = 0,
 }: {
   value?: number;
 }) {
   return (
-    <div className="h-[120px]">
+    <div className="text-left h-[120px]">
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}

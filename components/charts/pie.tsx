@@ -3,7 +3,7 @@ import { echarts } from "./index";
 
 export default function Container({ className }: { className?: string }) {
   return (
-    <div className="">
+    <div className="text-left">
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}

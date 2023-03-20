@@ -2,7 +2,7 @@ import ReactEChartsCore from "echarts-for-react/lib/core";
 import colors from "tailwindcss/colors";
 import { echarts } from "./index";
 
-export default function BarChartBarajDolulukOrani({
+export default function BarajDolulukOrani({
   labels = [],
   values = [],
 }: {
@@ -10,12 +10,15 @@ export default function BarChartBarajDolulukOrani({
   values?: number[] | string[];
 }) {
   return (
-    <div className="">
+    <div className="text-left">
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
         style={{ height: 200, fontFamily: "inherit" }}
         option={{
+          tooltip: {
+            formatter: '%{c}'
+          },
           grid: {
             left: "4%",
             right: "0%",

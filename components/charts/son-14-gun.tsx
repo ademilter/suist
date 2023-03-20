@@ -3,7 +3,7 @@ import colors from "tailwindcss/colors";
 import { DateTime } from "luxon";
 import { echarts } from "./index";
 
-export default function BarChartSon14Gun({
+export default function Son14Gun({
   labels = [],
   values = [],
 }: {
@@ -11,12 +11,15 @@ export default function BarChartSon14Gun({
   values?: number[] | string[];
 }) {
   return (
-    <div className="">
+    <div className="text-left">
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
         style={{ height: 160, fontFamily: "inherit" }}
         option={{
+          tooltip: {
+            formatter: '%{c}'
+          },
           grid: {
             left: "4%",
             right: "0%",

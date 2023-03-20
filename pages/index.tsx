@@ -23,9 +23,12 @@ const BarChartBarajDolulukOrani = dynamic(
   }
 );
 
-const TreeMap = dynamic(() => import("@/components/charts/treemap"), {
-  ssr: false,
-});
+const BarajSuDagilimi = dynamic(
+  () => import("@/components/charts/baraj-su-dagilimi"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Index() {
   const { data, appLoading } = useContext(CommonStoreContext);
@@ -74,7 +77,7 @@ export default function Index() {
             </header>
 
             <h4 className="opacity-60">Su Miktarının Dağılımı</h4>
-            <TreeMap
+            <BarajSuDagilimi
               data={
                 dataBarajSuDagilimi?.veriListeleriField as [string, number][]
               }
