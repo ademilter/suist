@@ -1,20 +1,5 @@
-import * as echarts from "echarts/core";
-import { PieChart } from "echarts/charts";
-import {
-  GridComponent,
-  LegendComponent,
-  TooltipComponent,
-} from "echarts/components";
-import { SVGRenderer } from "echarts/renderers";
 import ReactEChartsCore from "echarts-for-react/lib/core";
-
-echarts.use([
-  TooltipComponent,
-  LegendComponent,
-  GridComponent,
-  SVGRenderer,
-  PieChart,
-]);
+import { echarts } from "./index";
 
 export default function Container({ className }: { className?: string }) {
   return (

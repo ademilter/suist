@@ -1,22 +1,7 @@
-import * as echarts from "echarts/core";
-import { BarChart } from "echarts/charts";
-import {
-  GridComponent,
-  LegendComponent,
-  TooltipComponent,
-} from "echarts/components";
-import { SVGRenderer } from "echarts/renderers";
 import ReactEChartsCore from "echarts-for-react/lib/core";
 import colors from "tailwindcss/colors";
 import { DateTime } from "luxon";
-
-echarts.use([
-  TooltipComponent,
-  LegendComponent,
-  GridComponent,
-  SVGRenderer,
-  BarChart,
-]);
+import { echarts } from "./index";
 
 export default function BarChartSon14Gun({
   labels = [],
@@ -33,12 +18,11 @@ export default function BarChartSon14Gun({
         style={{ height: 160, fontFamily: "inherit" }}
         option={{
           grid: {
-            top: "4%",
             left: "4%",
-            right: "4%",
-            bottom: "4%",
+            right: "0%",
+            top: "4%",
+            bottom: "0%",
             containLabel: true,
-            borderColor: "#fff",
           },
           xAxis: {
             type: "category",
@@ -47,13 +31,9 @@ export default function BarChartSon14Gun({
               show: false,
             },
             axisLabel: {
-              // margin: 0,
-              showMinLabel: false,
-              showMaxLabel: true,
               fontFamily: "inherit",
               rotate: 45,
               formatter: function (value: string) {
-                console.log(value);
                 return DateTime.fromFormat(value, "yyyy-MM-dd").toFormat(
                   "dd MMM"
                 );

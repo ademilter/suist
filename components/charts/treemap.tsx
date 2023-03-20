@@ -1,14 +1,10 @@
-import * as echarts from "echarts/core";
-import { TreemapChart } from "echarts/charts";
-import { SVGRenderer } from "echarts/renderers";
 import ReactEChartsCore from "echarts-for-react/lib/core";
 import { ECharts } from "echarts";
 import colors from "tailwindcss/colors";
 import { useState } from "react";
+import { echarts } from "./index";
 
-echarts.use([SVGRenderer, TreemapChart]);
-
-export default function Container({ className }: { className?: string }) {
+export default function Container({ data = [] }: { data: [string, number][] }) {
   const [chart, setChart] = useState<ECharts | null>(null);
   const [isDirty, setIsDirty] = useState<boolean>(false);
 
@@ -86,118 +82,19 @@ export default function Container({ className }: { className?: string }) {
                 },
               },
             ],
-            data: [
-              {
-                name: "Ömerli",
-                value: 40.3,
+            data: data.map(([name, value]) => {
+              return {
+                name,
+                value,
                 label: {
                   fontFamily: "inherit",
                 },
                 itemStyle: {
-                  // borderRadius: 8,
+                  borderRadius: 2,
                   borderColor: "transparent",
                 },
-              },
-              {
-                name: "Terkos",
-                value: 16,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Darlık",
-                value: 15.2,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Büyükçekmece",
-                value: 14.2,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Sazlıdere",
-                value: 9.2,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Pabuçdere",
-                value: 1.7,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Alibey",
-                value: 1.2,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Elmalı",
-                value: 1,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Istrancalar",
-                value: 0.6,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-              {
-                name: "Kazandere",
-                value: 0.5,
-                label: {
-                  fontFamily: "inherit",
-                },
-                itemStyle: {
-                  // borderRadius: 8,
-                  borderColor: "transparent",
-                },
-              },
-            ],
+              };
+            }),
           },
         }}
       />

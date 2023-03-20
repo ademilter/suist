@@ -1,29 +1,18 @@
-import * as echarts from "echarts/core";
-import { GaugeChart } from "echarts/charts";
-import {
-  GridComponent,
-  LegendComponent,
-  TooltipComponent,
-} from "echarts/components";
-import { SVGRenderer } from "echarts/renderers";
 import ReactEChartsCore from "echarts-for-react/lib/core";
 import colors from "tailwindcss/colors";
+import { echarts } from "./index";
 
-echarts.use([
-  TooltipComponent,
-  LegendComponent,
-  GridComponent,
-  SVGRenderer,
-  GaugeChart,
-]);
-
-export default function Container({ value=0 }: { value?: number }) {
+export default function GaugeChartMevcutDurum({
+  value = 0,
+}: {
+  value?: number;
+}) {
   return (
-    <div className="h-[170px]">
+    <div className="h-[120px]">
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
-        style={{ height: 300, fontFamily: "inherit" }}
+        style={{ height: 240, fontFamily: "inherit" }}
         option={{
           series: [
             {
@@ -40,19 +29,19 @@ export default function Container({ value=0 }: { value?: number }) {
               axisLine: {
                 // roundCap: true,
                 lineStyle: {
-                  width: 40,
+                  width: 34,
                   color: [[1, colors.sky["200"]]],
                 },
               },
               progress: {
                 // roundCap: true,
                 show: true,
-                width: 40,
+                width: 34,
               },
               detail: {
                 valueAnimation: true,
-                offsetCenter: [0, -20],
-                fontSize: 40,
+                offsetCenter: [0, -14],
+                fontSize: 26,
                 fontWeight: "bolder",
                 formatter: "% {value}",
                 color: "inherit",

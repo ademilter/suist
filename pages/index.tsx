@@ -3,9 +3,12 @@ import { CommonStoreContext } from "@/stores/common";
 import dynamic from "next/dynamic";
 import Container from "@/components/container";
 
-const Gauge = dynamic(() => import("@/components/charts/gauge"), {
-  ssr: false,
-});
+const GaugeChartMevcutDurum = dynamic(
+  () => import("@/components/charts/mevcut-durum"),
+  {
+    ssr: false,
+  }
+);
 
 const BarChartSon14Gun = dynamic(
   () => import("@/components/charts/son-14-gun"),
@@ -31,6 +34,10 @@ export default function Index() {
     return item?.idField === 1;
   });
 
+  const dataBarajSuDagilimi = data?.grafikler.find(item => {
+    return item?.idField === 11;
+  });
+
   const dataBarajDolulukOrani = data?.grafikler.find(item => {
     return item?.idField === 12;
   });
@@ -43,12 +50,12 @@ export default function Index() {
         <div className="grid gap-10">
           <div className="grid gap-6 rounded-xl bg-white p-10 shadow">
             <header>
-              <h2 className="mb-6 inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
+              <h2 className="inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
                 Toplam Doluluk Oranı
               </h2>
             </header>
 
-              <Gauge value={data?.sonDolulukOraniField} />
+            <GaugeChartMevcutDurum value={data?.sonDolulukOraniField} />
 
             <BarChartSon14Gun
               labels={[...(dataSon14Gun?.veriListeleriField[0] || [])].splice(
@@ -59,7 +66,7 @@ export default function Index() {
               )}
             />
           </div>
-          <div className="grid gap-4 rounded-xl bg-white p-10 shadow">
+          <div className="grid gap-6 rounded-xl bg-white p-10 shadow">
             <header>
               <h2 className="inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
                 Barajlara Göre
@@ -67,9 +74,11 @@ export default function Index() {
             </header>
 
             <h4 className="opacity-60">Su Miktarının Dağılımı</h4>
-            <TreeMap />
-
-            <hr />
+            <TreeMap
+              data={
+                dataBarajSuDagilimi?.veriListeleriField as [string, number][]
+              }
+            />
 
             <h4 className="opacity-60">Doluluk Oranı</h4>
             <BarChartBarajDolulukOrani
