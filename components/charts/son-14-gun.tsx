@@ -2,6 +2,7 @@ import ReactEChartsCore from "echarts-for-react/lib/core";
 import colors from "tailwindcss/colors";
 import { DateTime } from "luxon";
 import { echarts } from "./index";
+import { ECharts } from "echarts";
 
 export default function Son14Gun({
   labels = [],
@@ -10,16 +11,28 @@ export default function Son14Gun({
   labels?: string[];
   values?: number[] | string[];
 }) {
+  const onChartReadyCallback = (ch: ECharts) => {
+    setTimeout(() => {
+      // refrehs
+      ch.dispatchAction({
+        type: "showTip",
+        dataIndex: 0,
+      });
+    }, 1000);
+  };
+
+  const eventsMap = {};
+
   return (
     <div className="text-left">
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
-        style={{ height: 160, fontFamily: "inherit" }}
+        style={{ height: 120, fontFamily: "inherit" }}
+        onEvents={eventsMap}
+        onChartReady={onChartReadyCallback}
         option={{
-          tooltip: {
-            formatter: '%{c}'
-          },
+          tooltip: {},
           grid: {
             left: "4%",
             right: "0%",
@@ -34,12 +47,10 @@ export default function Son14Gun({
               show: false,
             },
             axisLabel: {
+              interval: 0,
               fontFamily: "inherit",
-              rotate: 45,
               formatter: function (value: string) {
-                return DateTime.fromFormat(value, "yyyy-MM-dd").toFormat(
-                  "dd MMM"
-                );
+                return DateTime.fromFormat(value, "yyyy-MM-dd").toFormat("dd");
               },
             },
             axisTick: {
@@ -49,6 +60,7 @@ export default function Son14Gun({
           },
           yAxis: {
             type: "value",
+            // show: false,
             max: 100,
             splitLine: {
               lineStyle: {
@@ -58,20 +70,26 @@ export default function Son14Gun({
             },
             axisLabel: {
               fontFamily: "inherit",
-              // margin: 14,
-              // showMaxLabel: false,
               showMinLabel: false,
+              formatter: (value: number) => `${value}%`,
             },
           },
           series: [
             {
               type: "bar",
+              barCategoryGap: 10,
               showBackground: true,
               itemStyle: {
-                color: colors.sky[500],
+                color: colors.sky[400],
+              },
+              label: {
+                show: true,
+                color: colors.sky[700],
+                position: "top",
+                formatter: (params: any) => `${params.value.toFixed(0)}%`,
               },
               backgroundStyle: {
-                color: colors.gray[50],
+                color: colors.sky[50],
               },
               data: values,
             },

@@ -14,11 +14,9 @@ export default function BarajDolulukOrani({
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
-        style={{ height: 200, fontFamily: "inherit" }}
+        style={{ height: 120, fontFamily: "inherit" }}
         option={{
-          tooltip: {
-            formatter: '%{c}'
-          },
+          tooltip: {},
           grid: {
             left: "4%",
             right: "0%",
@@ -33,8 +31,9 @@ export default function BarajDolulukOrani({
               show: false,
             },
             axisLabel: {
-              rotate: 45,
+              interval: 0,
               fontFamily: "inherit",
+              formatter: (value: string) => value.slice(0, 4),
             },
             axisTick: {
               show: false,
@@ -42,6 +41,7 @@ export default function BarajDolulukOrani({
           },
           yAxis: {
             type: "value",
+            // show: false,
             max: 100,
             splitLine: {
               lineStyle: {
@@ -52,17 +52,25 @@ export default function BarajDolulukOrani({
             axisLabel: {
               fontFamily: "inherit",
               showMinLabel: false,
+              formatter: (value: number) => `${value}%`,
             },
           },
           series: [
             {
               type: "bar",
+              barCategoryGap: 10,
               showBackground: true,
               itemStyle: {
-                color: colors.emerald[500],
+                color: colors.emerald[400],
+              },
+              label: {
+                show: true,
+                color: colors.emerald[700],
+                position: "top",
+                formatter: (params: any) => `${params.value.toFixed(0)}%`,
               },
               backgroundStyle: {
-                color: colors.gray[50],
+                color: colors.emerald[50],
               },
               data: values,
             },

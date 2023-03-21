@@ -4,7 +4,11 @@ import colors from "tailwindcss/colors";
 // import { useState } from "react";
 import { echarts } from "./index";
 
-export default function BarajSuDagilimi({ data = [] }: { data: [string, number][] }) {
+export default function BarajSuDagilimi({
+  data = [],
+}: {
+  data: [string, number][];
+}) {
   // const [chart, setChart] = useState<ECharts | null>(null);
   // const [isDirty, setIsDirty] = useState<boolean>(false);
 
@@ -45,7 +49,7 @@ export default function BarajSuDagilimi({ data = [] }: { data: [string, number][
         lazyUpdate={true}
         option={{
           tooltip: {
-            formatter: '{b}<br />%{c}'
+            formatter: "{b}<br />%{c}",
           },
           series: {
             type: "treemap",
@@ -55,28 +59,31 @@ export default function BarajSuDagilimi({ data = [] }: { data: [string, number][
             top: "top",
             left: "center",
             squareRatio: 1,
-            roam: false,
             leafDepth: 1,
-            visibleMin: 10,
-            labelLayout: {
-              draggable: false,
+            roam: false,
+            breadcrumb: {
+              itemStyle: {
+                color:  colors.emerald["50"],
+                textStyle: {
+                  color:  colors.emerald["900"]
+                }
+              }
             },
-
             levels: [
               {
+                colorMappingBy: "index",
                 color: [
-                  colors.emerald["700"],
-                  colors.emerald["600"],
-                  colors.emerald["500"],
                   colors.emerald["400"],
                   colors.emerald["300"],
                   colors.emerald["300"],
-                  colors.emerald["300"],
-                  colors.emerald["300"],
-                  colors.emerald["300"],
-                  colors.emerald["300"],
+                  colors.emerald["200"],
+                  colors.emerald["200"],
+                  colors.emerald["200"],
+                  colors.emerald["100"],
+                  colors.emerald["100"],
+                  colors.emerald["100"],
+                  colors.emerald["50"],
                 ],
-                colorMappingBy: "index",
                 itemStyle: {
                   borderColor: "transparent",
                   gapWidth: 6,
@@ -89,6 +96,7 @@ export default function BarajSuDagilimi({ data = [] }: { data: [string, number][
                 value,
                 label: {
                   fontFamily: "inherit",
+                  color: colors.emerald["900"],
                 },
                 itemStyle: {
                   borderRadius: 4,

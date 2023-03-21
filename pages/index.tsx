@@ -49,17 +49,17 @@ export default function Index() {
   if (appLoading) return <div>Loading...</div>;
 
   return (
-    <div className="py-4 text-center md:py-6">
+    <div className="py-4 text-center md:py-8">
       <Container>
-        <div className="grid gap-4 md:gap-6">
+        <div className="grid gap-4 md:gap-8">
           <Box>
-            <header>
-              <h2 className="inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
-                Toplam Doluluk Oranı
-              </h2>
-            </header>
+            <h2 className="opacity-60">Toplam Doluluk Oranı</h2>
 
             <GaugeChartMevcutDurum value={data?.sonDolulukOraniField} />
+          </Box>
+
+          <Box>
+            <h2 className="opacity-60">Son 10 Gün</h2>
 
             <BarChartSon14Gun
               labels={[...(dataSon14Gun?.veriListeleriField[0] || [])].splice(
@@ -72,20 +72,20 @@ export default function Index() {
           </Box>
 
           <Box>
-            <header>
-              <h2 className="inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
-                Barajlara Göre
-              </h2>
-            </header>
+            <h2 className="opacity-60">
+              Toplam Miktarın Barajlara Göre Dağılımı
+            </h2>
 
-            <h4 className="opacity-60">Su Miktarının Dağılımı</h4>
             <BarajSuDagilimi
               data={
                 dataBarajSuDagilimi?.veriListeleriField as [string, number][]
               }
             />
+          </Box>
 
-            <h4 className="opacity-60">Doluluk Oranı</h4>
+          <Box>
+            <h2 className="opacity-60">Barajların Doluluk Oranı</h2>
+
             <BarChartBarajDolulukOrani
               labels={[
                 ...(dataBarajDolulukOrani?.veriListeleriField[0] || []),

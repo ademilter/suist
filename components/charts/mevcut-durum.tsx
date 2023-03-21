@@ -24,13 +24,13 @@ export default function MevcutDurum({
               min: 0,
               max: 100,
               itemStyle: {
-                color: colors.sky["500"],
+                color: colors.sky["400"],
               },
               axisLine: {
                 // roundCap: true,
                 lineStyle: {
                   width: 34,
-                  color: [[1, colors.sky["200"]]],
+                  color: [[1, colors.sky["100"]]],
                 },
               },
               progress: {
