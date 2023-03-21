@@ -59,7 +59,7 @@ export default function Index() {
           </Box>
 
           <Box>
-            <h2 className="opacity-60">Son 10 Gün</h2>
+            <h2 className="opacity-60">Toplam Doluluk Oranı, Son 10 Gün</h2>
 
             <BarChartSon14Gun
               labels={[...(dataSon14Gun?.veriListeleriField[0] || [])].splice(
