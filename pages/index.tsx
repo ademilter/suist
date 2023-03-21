@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CommonStoreContext } from "@/stores/common";
 import dynamic from "next/dynamic";
 import Container from "@/components/container";
+import Box from "@/components/box";
 
 const GaugeChartMevcutDurum = dynamic(
   () => import("@/components/charts/mevcut-durum"),
@@ -48,10 +49,10 @@ export default function Index() {
   if (appLoading) return <div>Loading...</div>;
 
   return (
-    <div className="py-10 text-center">
+    <div className="py-4 text-center md:py-6">
       <Container>
-        <div className="grid gap-10">
-          <div className="grid gap-6 rounded-xl bg-white p-10 shadow">
+        <div className="grid gap-4 md:gap-6">
+          <Box>
             <header>
               <h2 className="inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
                 Toplam Doluluk Oranı
@@ -68,8 +69,9 @@ export default function Index() {
                 5
               )}
             />
-          </div>
-          <div className="grid gap-6 rounded-xl bg-white p-10 shadow">
+          </Box>
+
+          <Box>
             <header>
               <h2 className="inline-flex rounded-full bg-gray-100 px-4 py-1 text-lg">
                 Barajlara Göre
@@ -92,7 +94,7 @@ export default function Index() {
                 ...(dataBarajDolulukOrani?.veriListeleriField[1] || []),
               ].splice(1)}
             />
-          </div>
+          </Box>
         </div>
       </Container>
     </div>

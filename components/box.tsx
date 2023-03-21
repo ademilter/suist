@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { cx } from "@/lib/utils";
 
-export default function Container({
+export default function Box({
   children,
   className,
 }: {
@@ -9,7 +9,12 @@ export default function Container({
   className?: string;
 }) {
   return (
-    <div className={cx("mx-auto max-w-2xl px-4 md:px-6", className)}>
+    <div
+      className={cx(
+        "grid gap-6 rounded-xl bg-white p-4 shadow md:p-6",
+        className
+      )}
+    >
       {children}
     </div>
   );
