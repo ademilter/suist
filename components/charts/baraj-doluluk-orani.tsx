@@ -18,9 +18,9 @@ export default function BarajDolulukOrani({
         option={{
           tooltip: {},
           grid: {
-            left: "4%",
+            left: "0%",
             right: "0%",
-            top: "4%",
+            top: "0%",
             bottom: "0%",
             containLabel: true,
           },
@@ -41,7 +41,6 @@ export default function BarajDolulukOrani({
           },
           yAxis: {
             type: "value",
-            // show: false,
             max: 100,
             splitLine: {
               lineStyle: {
@@ -50,15 +49,16 @@ export default function BarajDolulukOrani({
               },
             },
             axisLabel: {
+              show: false,
               fontFamily: "inherit",
               showMinLabel: false,
-              formatter: (value: number) => `${value}%`,
+              formatter: (value: number) => `${value.toFixed(0)}%`,
             },
           },
           series: [
             {
               type: "bar",
-              barCategoryGap: 10,
+              barCategoryGap: "10%",
               showBackground: true,
               itemStyle: {
                 color: colors.emerald[400],

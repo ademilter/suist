@@ -56,10 +56,8 @@ export default function Index() {
             <h2 className="opacity-60">Toplam Doluluk Oranı</h2>
 
             <GaugeChartMevcutDurum value={data?.sonDolulukOraniField} />
-          </Box>
 
-          <Box>
-            <h2 className="opacity-60">Toplam Doluluk Oranı, Son 10 Gün</h2>
+            {/*<h2 className="opacity-60">Son 10 Gün</h2>*/}
 
             <BarChartSon14Gun
               labels={[...(dataSon14Gun?.veriListeleriField[0] || [])].splice(
@@ -81,9 +79,7 @@ export default function Index() {
                 dataBarajSuDagilimi?.veriListeleriField as [string, number][]
               }
             />
-          </Box>
 
-          <Box>
             <h2 className="opacity-60">Barajların Doluluk Oranı</h2>
 
             <BarChartBarajDolulukOrani

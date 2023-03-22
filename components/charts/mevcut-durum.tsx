@@ -30,7 +30,7 @@ export default function MevcutDurum({
                 // roundCap: true,
                 lineStyle: {
                   width: 34,
-                  color: [[1, colors.sky["100"]]],
+                  color: [[1, colors.sky["50"]]],
                 },
               },
               progress: {

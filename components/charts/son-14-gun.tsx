@@ -34,9 +34,9 @@ export default function Son14Gun({
         option={{
           tooltip: {},
           grid: {
-            left: "4%",
+            left: "0%",
             right: "0%",
-            top: "4%",
+            top: "0%",
             bottom: "0%",
             containLabel: true,
           },
@@ -47,20 +47,21 @@ export default function Son14Gun({
               show: false,
             },
             axisLabel: {
+              margin: 6,
               interval: 0,
               fontFamily: "inherit",
               formatter: function (value: string) {
-                return DateTime.fromFormat(value, "yyyy-MM-dd").toFormat("dd");
+                return DateTime.fromFormat(value, "yyyy-MM-dd").toFormat(
+                  "dd MMM"
+                );
               },
             },
             axisTick: {
               show: false,
-              // alignWithLabel: true,
             },
           },
           yAxis: {
             type: "value",
-            // show: false,
             max: 100,
             splitLine: {
               lineStyle: {
@@ -68,16 +69,20 @@ export default function Son14Gun({
                 color: colors.gray[50],
               },
             },
+            axisTick: {
+              show: false,
+            },
             axisLabel: {
+              show: false,
               fontFamily: "inherit",
               showMinLabel: false,
-              formatter: (value: number) => `${value}%`,
+              formatter: (value: number) => `${value.toFixed(0)}%`,
             },
           },
           series: [
             {
               type: "bar",
-              barCategoryGap: 10,
+              barCategoryGap: "10%",
               showBackground: true,
               itemStyle: {
                 color: colors.sky[400],
