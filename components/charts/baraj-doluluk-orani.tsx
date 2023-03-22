@@ -14,7 +14,7 @@ export default function BarajDolulukOrani({
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
-        style={{ height: 120, fontFamily: "inherit" }}
+        style={{ height: 100, fontFamily: "inherit" }}
         option={{
           tooltip: {},
           grid: {

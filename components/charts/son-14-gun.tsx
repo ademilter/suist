@@ -28,7 +28,7 @@ export default function Son14Gun({
       <ReactEChartsCore
         echarts={echarts}
         lazyUpdate={true}
-        style={{ height: 120, fontFamily: "inherit" }}
+        style={{ height: 100, fontFamily: "inherit" }}
         onEvents={eventsMap}
         onChartReady={onChartReadyCallback}
         option={{
