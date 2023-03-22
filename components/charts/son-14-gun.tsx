@@ -52,7 +52,7 @@ export default function Son14Gun({
               fontFamily: "inherit",
               formatter: function (value: string) {
                 return DateTime.fromFormat(value, "yyyy-MM-dd").toFormat(
-                  "dd MMM"
+                  "dd"
                 );
               },
             },

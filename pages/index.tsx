@@ -51,9 +51,9 @@ export default function Index() {
   if (!data) return null;
 
   return (
-    <div className="py-4 text-center md:py-8">
+    <div className="pt-6 py-40 text-center md:pt-8">
       <Container>
-        <div className="grid gap-4 md:gap-8">
+        <div className="grid gap-6 md:gap-8">
           <Box>
             <h2 className="opacity-60">Toplam Doluluk Oranı</h2>
 

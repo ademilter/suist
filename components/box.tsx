@@ -11,7 +11,7 @@ export default function Box({
   return (
     <div
       className={cx(
-        "grid gap-6 rounded-xl bg-white p-4 shadow md:p-8",
+        "grid gap-6 rounded-2xl bg-white p-6 shadow md:p-8",
         className
       )}
     >
