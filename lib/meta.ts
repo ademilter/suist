@@ -1,4 +1,4 @@
-const siteName = "SuIST";
+const siteName = "Suİst";
 const title = `${siteName}`;
 const description = "İstanbul barajlarının su seviyeleri";
 const url = "https://suist.vercel.app";
