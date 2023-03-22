@@ -47,15 +47,31 @@ export default function Index() {
   });
 
   if (appLoading) return <div>Loading...</div>;
+  if (!data) return null
 
   return (
     <div className="py-4 text-center md:py-8">
       <Container>
-        <div className="grid gap-4 md:gap-8">
+        <div className="text-sm opacity-50">
+          <p>
+            Bu sayfadaki veriler{" "}
+            <a
+              className="underline"
+              href="https://www.iski.istanbul/web/tr-TR/baraj-doluluk"
+              target="_blank"
+            >
+              İSKİ
+            </a>
+            &apos;nin web sitesinden alınmıştır.
+          </p>
+          <p>Son Güncelleme: {data.sonTarihField}, {data.sonSaatField}</p>
+        </div>
+
+        <div className="mt-4 grid gap-4 md:gap-8">
           <Box>
             <h2 className="opacity-60">Toplam Doluluk Oranı</h2>
 
-            <GaugeChartMevcutDurum value={data?.sonDolulukOraniField} />
+            <GaugeChartMevcutDurum value={data.sonDolulukOraniField} />
 
             {/*<h2 className="opacity-60">Son 10 Gün</h2>*/}
 
