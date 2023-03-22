@@ -82,7 +82,7 @@ export default function Son14Gun({
           series: [
             {
               type: "bar",
-              barCategoryGap: "10%",
+              barCategoryGap: "15%",
               showBackground: true,
               itemStyle: {
                 color: colors.sky[400],

@@ -58,7 +58,7 @@ export default function BarajDolulukOrani({
           series: [
             {
               type: "bar",
-              barCategoryGap: "10%",
+              barCategoryGap: "15%",
               showBackground: true,
               itemStyle: {
                 color: colors.emerald[400],

@@ -3,6 +3,7 @@ import { CommonStoreContext } from "@/stores/common";
 import dynamic from "next/dynamic";
 import Container from "@/components/container";
 import Box from "@/components/box";
+import { DateTime } from "luxon";
 
 const GaugeChartMevcutDurum = dynamic(
   () => import("@/components/charts/mevcut-durum"),
@@ -47,27 +48,12 @@ export default function Index() {
   });
 
   if (appLoading) return <div>Loading...</div>;
-  if (!data) return null
+  if (!data) return null;
 
   return (
     <div className="py-4 text-center md:py-8">
       <Container>
-        <div className="text-sm opacity-50">
-          <p>
-            Bu sayfadaki veriler{" "}
-            <a
-              className="underline"
-              href="https://www.iski.istanbul/web/tr-TR/baraj-doluluk"
-              target="_blank"
-            >
-              İSKİ
-            </a>
-            &apos;nin web sitesinden alınmıştır.
-          </p>
-          <p>Son Güncelleme: {data.sonTarihField}, {data.sonSaatField}</p>
-        </div>
-
-        <div className="mt-4 grid gap-4 md:gap-8">
+        <div className="grid gap-4 md:gap-8">
           <Box>
             <h2 className="opacity-60">Toplam Doluluk Oranı</h2>
 
@@ -107,6 +93,27 @@ export default function Index() {
               ].splice(1)}
             />
           </Box>
+
+          <div className="text-sm opacity-50">
+            <p>
+              Bu sayfadaki veriler{" "}
+              <a
+                className="underline"
+                href="https://www.iski.istanbul/web/tr-TR/baraj-doluluk"
+                target="_blank"
+              >
+                İSKİ
+              </a>
+              &apos;nin web sitesinden alınmıştır.
+            </p>
+            <p>
+              Son Güncelleme:{" "}
+              {DateTime.fromFormat(
+                `${data.sonTarihField} ${data.sonSaatField}`,
+                "dd.MM.yyyy HH:mm"
+              ).toRelative()}
+            </p>
+          </div>
         </div>
       </Container>
     </div>
